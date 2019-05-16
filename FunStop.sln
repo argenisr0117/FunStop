@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunStop", "FunStop\FunStop.csproj", "{4D0A1A95-51CD-4CA8-87F6-6334487A5C69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D0A1A95-51CD-4CA8-87F6-6334487A5C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0A1A95-51CD-4CA8-87F6-6334487A5C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0A1A95-51CD-4CA8-87F6-6334487A5C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0A1A95-51CD-4CA8-87F6-6334487A5C69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F9CA945-7391-4955-93CE-5493F3FDF32A}
+	EndGlobalSection
+EndGlobal
