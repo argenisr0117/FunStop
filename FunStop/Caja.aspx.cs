@@ -101,6 +101,9 @@ namespace FunStop
                 tarifaTxt.Text = "0.00";
                 FillRateRadioB();
                 tarifaRb.SelectedIndex = 0;
+                dt = T.GetLastTickets();
+                ticketsGrid.DataSource = dt;
+                ticketsGrid.DataBind();
             }
 
         }

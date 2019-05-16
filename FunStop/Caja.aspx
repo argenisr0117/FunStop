@@ -7,7 +7,7 @@
     </div>
     <div class="container-fluid mb-3">
         <div class="row">
-            <div class=" col-12 col-sm-8 col-md-6 col-lg-6 col-xl-3">
+            <div class=" col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <h2>Datos Cliente</h2>
@@ -74,6 +74,15 @@
                         <asp:TextBox ID="totalTxt" CssClass="form-control text-danger font-weight-bolder h1" runat="server" TextMode="Number" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <asp:GridView ID="ticketsGrid" runat="server"
+                    BorderColor="black"
+                    BorderWidth="1"
+                    CellPadding="3"
+                    AutoGenerateColumns="true">
+                    <HeaderStyle BackColor="#00aaaa"></HeaderStyle>
+                </asp:GridView>
             </div>
         </div>
         <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">

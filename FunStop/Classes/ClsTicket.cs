@@ -43,6 +43,13 @@ namespace FunStop.Classes
             Msj = Convert.ToInt32(lst[0].Valor);
             return Msj;
         }
+
+        public DataTable GetLastTickets()
+        {
+            DataTable dt = new DataTable();
+            List<ClsParams> lst = new List<ClsParams>();
+            return dt = Conn.Listado("Sp_GetLastTickets", lst);
+        }
         #endregion
     }
 }
