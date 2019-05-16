@@ -132,13 +132,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Caja.aspx" />
-    <Content Include="Contact.aspx" />
+    <Content Include="Pista.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -186,6 +188,11 @@
     <Content Include="FunStopDataSet.xsc">
       <DependentUpon>FunStopDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="FunStopDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>FunStopDataSet.Designer.cs</LastGenOutput>
@@ -263,12 +270,12 @@
     <Compile Include="ClsDBConn.cs" />
     <Compile Include="ClsGlobal.cs" />
     <Compile Include="ClsParams.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Pista.aspx.cs">
+      <DependentUpon>Pista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Pista.aspx.designer.cs">
+      <DependentUpon>Pista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

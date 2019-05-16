@@ -78,6 +78,12 @@ namespace FunStop
             }
         }
 
+        public void FillGridView()
+        {
+            dt = T.GetLastTickets();
+            ticketsGrid.DataSource = dt;
+            ticketsGrid.DataBind();
+        }
         public void CleanTxts()
         {
             nombreTxt.Text = string.Empty;
@@ -101,9 +107,8 @@ namespace FunStop
                 tarifaTxt.Text = "0.00";
                 FillRateRadioB();
                 tarifaRb.SelectedIndex = 0;
-                dt = T.GetLastTickets();
-                ticketsGrid.DataSource = dt;
-                ticketsGrid.DataBind();
+                FillGridView();
+                //ticketsGrid.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
 
         }
@@ -128,6 +133,7 @@ namespace FunStop
         {
             TicketRegister(this, e);
             ScriptManager.RegisterStartupScript(Page, GetType(), "OpenWindow", "window.open('Report.aspx','mywindow','menubar=1,resizable=1,width=900,height=600');", true);
+            FillGridView();
             if (!multicket_chbox.Checked)
             {
                 CleanTxts();
@@ -150,12 +156,31 @@ namespace FunStop
                 }
             }
         }
-
-        #endregion
-
         protected void LimpiarBtn_Click(object sender, EventArgs e)
         {
             CleanTxts();
         }
+
+        protected void ticketsGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string command = e.CommandName;
+            string autoId = e.CommandArgument.ToString();
+
+            switch (command)
+            {
+                case "Print":
+
+                    ClsGlobal.TicketID = Convert.ToInt16(autoId);
+                    ScriptManager.RegisterStartupScript(Page, GetType(), "OpenWindow", "window.open('Report.aspx','mywindow','menubar=1,resizable=1,width=900,height=600');", true);
+                    break;
+
+                case "Cancel":
+                    //Response.Write("<b>Mark As Archived for " + autoId + " </b> button clicked");
+                    break;
+            }
+        }
+        #endregion
+
+    
     }
 }
