@@ -2,12 +2,12 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
-        <h2 class="mt-3"><%: Title %>.</h2>
+        <h2 class="mt-3"><%: Title %></h2>
         <hr />
     </div>
     <div class="container-fluid mb-3">
         <div class="row">
-            <div class=" col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <div class=" col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <h2>Datos Cliente</h2>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
                 <h2>Ultimos Tickets</h2>
                 <div class="table-responsive-sm">
                     <asp:UpdatePanel runat="server">
@@ -84,7 +84,7 @@
                                 BorderColor="#CCCCCC"
                                 BorderWidth="0px"
                                 CellPadding="3" GridLines="Horizontal"
-                                CssClass="table table-hover" AutoGenerateColumns="False" OnRowCommand="ticketsGrid_RowCommand">
+                                CssClass="table table-sm table-hover" AutoGenerateColumns="False" OnRowCommand="ticketsGrid_RowCommand">
                                 <HeaderStyle CssClass="thead-dark"></HeaderStyle>
                                 <Columns>
                                     <asp:BoundField DataField="TicketID" HeaderText="TicketID" />

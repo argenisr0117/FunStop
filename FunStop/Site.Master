@@ -43,8 +43,8 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-            <a class="navbar-brand text-dark" runat="server" href="~/">FunStop</a>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark stroke">
+            <a class="text-white h3 navbar-brand" runat="server" href="~/">FunStop</a>
             <button class="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,13 +54,13 @@
                         <a class="nav-link text-dark" runat="server" href="~/">Inicio<span class="sr-only">(current)</span></a>
                     </li>--%>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" runat="server" href="~/Caja">Caja</a>
+                        <a class="nav-link text-white h6" runat="server" href="~/Caja"><i class="fa fa-money"></i> Caja</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" runat="server" href="~/Pista">Pista</a>
+                        <a class="nav-link text-white h6" runat="server" href="~/Pista"><i class="fa fa-car"></i> Pista</a>
                     </li>
                     <li class="nav-item">
-                        <asp:Button ID="LogoutBtn" runat="server" CausesValidation="false" Text="Salir" CssClass="btn btn-outline-danger" OnClick="LogoutBtn_Click" UseSubmitBehavior="False" />
+                        <asp:Button ID="LogoutBtn" runat="server" CausesValidation="false" Text="Salir" CssClass="btn btn-outline-danger font-weight-bolder" OnClick="LogoutBtn_Click" UseSubmitBehavior="False" />
                     </li>
                 </ul>
             </div>

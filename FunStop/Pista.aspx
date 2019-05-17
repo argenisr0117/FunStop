@@ -2,12 +2,12 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
-        <h2 class="mt-3"><%: Title %>.</h2>
+        <h2 class="mt-3"><%: Title %></h2>
         <hr />
     </div>
     <div class="container-fluid mb-3">
         <div class="row">
-            <div class=" col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <div class=" col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <h2>Tickets Pendientes</h2>
@@ -18,9 +18,14 @@
                                         BorderColor="#CCCCCC"
                                         BorderWidth="0px"
                                         CellPadding="3" GridLines="Horizontal"
-                                        CssClass="table table-sm table-hover" AutoGenerateColumns="False">
+                                        CssClass="table table-sm table-hover" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="ticketspendGrid_PageIndexChanging" PageSize="7">
                                         <HeaderStyle CssClass="thead-dark"></HeaderStyle>
                                         <Columns>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:RadioButton runat="server"  />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:BoundField DataField="TicketID" HeaderText="TicketID" />
                                             <asp:BoundField DataField="Tiempo" HeaderText="Minutos" />
                                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
@@ -31,10 +36,12 @@
                                                     <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ID="anularBtn" CausesValidation="false" ToolTip="Anular" CommandName="Cancel" CssClass="btn btn-sm btn-outline-danger"><i class='fa fa-close'></i></asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+
                                             <%--                    <asp:BoundField DataField="TicketID" HeaderText="TicketID" SortExpression="TicketID" />
                         <asp:BoundField DataField="Customer" HeaderText="Cliente" SortExpression="Customer" />
                         <asp:BoundField DataField="TrackTime" HeaderText="Tiempo" SortExpression="TrackTime" />--%>
                                         </Columns>
+                                        <PagerSettings Mode="NextPrevious" NextPageText="&amp;lt;Siguiente&amp;gt;" PreviousPageText="&amp;lt;Anterior&amp;gt;" />
                                         <RowStyle BorderColor="#999999" Height="10px" />
                                     </asp:GridView>
                                 </ContentTemplate>
@@ -79,7 +86,7 @@
 
             </div>
         </div>
-    <%--    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+        <%--    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <div class="row">
                     <div class="col-12 col-md-6 col-sm-6 col-lg-6">

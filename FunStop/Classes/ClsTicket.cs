@@ -50,6 +50,13 @@ namespace FunStop.Classes
             List<ClsParams> lst = new List<ClsParams>();
             return dt = Conn.Listado("Sp_GetLastTickets", lst);
         }
+
+        public DataTable GetPendingTickets()
+        {
+            DataTable dt = new DataTable();
+            List<ClsParams> lst = new List<ClsParams>();
+            return dt = Conn.Listado("Sp_GetPendingTickets", lst);
+        }
         #endregion
     }
 }

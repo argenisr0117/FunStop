@@ -19,7 +19,7 @@ namespace FunStop
         #region Methods    
         public void FillTicketsPendGridView()
         {
-            dt = T.GetLastTickets();
+            dt = T.GetPendingTickets();
             ticketspendGrid.DataSource = dt;
             ticketspendGrid.DataBind();
         }
@@ -35,5 +35,15 @@ namespace FunStop
                 FillTicketsPendGridView();
             }
         }
+        #region EventMethods
+
+        protected void ticketspendGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            ticketspendGrid.PageIndex = e.NewPageIndex;
+            FillTicketsPendGridView();
+        }
+
+        #endregion
+
     }
 }
