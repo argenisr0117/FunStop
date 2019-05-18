@@ -7,10 +7,10 @@
     </div>
     <div class="container-fluid mb-3">
         <div class="row">
-            <div class=" col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+            <div class=" col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <h2>Datos Cliente</h2>
+                        <h3>Datos Cliente</h3>
                         <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="Nombre"></asp:Label>
                             <asp:TextBox ID="nombreTxt" CssClass="form-control" autofocus="autofocus" runat="server" required="Required" AutoCompleteType="Disabled" TextMode="SingleLine"></asp:TextBox>
@@ -54,15 +54,6 @@
                                 <asp:AsyncPostBackTrigger ControlID="CarType_Dropd" EventName="SelectedIndexChanged" />
                             </Triggers>
                         </asp:UpdatePanel>
-
-                        <%--<div class="form-group">
-                            <asp:Label ID="LoginError" runat="server" Text=""></asp:Label>
-                        </div>--%>
-                        <%-- <div class="d-flex justify-content-center align-items-center">
-                                <asp:Button ID="LoginBtn" runat="server"
-                                    Text="Login" CssClass="btn btn-outline-danger btn-block"
-                                    OnClick="LoginBtn_Click" />
-                            </div>--%>
                     </ContentTemplate>
                 </asp:UpdatePanel>
                 <div class="form-group">
@@ -75,10 +66,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-                <h2>Ultimos Tickets</h2>
+            <div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                <h3>Ultimos Tickets</h3>
                 <div class="table-responsive-sm">
-                    <asp:UpdatePanel runat="server">
+                    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="ticketsGrid" runat="server"
                                 BorderColor="#CCCCCC"
@@ -93,8 +84,8 @@
                                     <asp:BoundField DataField="TipoCarro" HeaderText="Tipo Carro" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
+                                            <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ToolTip="Anular" CommandName="Anular" ID="anularBtn" CausesValidation="false" CssClass="btn btn-sm btn-outline-danger"><i class='fa fa-close'></i></asp:LinkButton>
                                             <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ToolTip="Reimprimir" CommandName="Print" ID="reimprimirBtn" CausesValidation="false" CssClass="btn btn-sm btn-outline-success"><i class='fa fa-print'></i></asp:LinkButton>
-                                            <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ID="anularBtn" CausesValidation="false" ToolTip="Anular" CommandName="Cancel" CssClass="btn btn-sm btn-outline-danger"><i class='fa fa-close'></i></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <%--                    <asp:BoundField DataField="TicketID" HeaderText="TicketID" SortExpression="TicketID" />
@@ -103,7 +94,11 @@
                                 </Columns>
                                 <RowStyle BorderColor="#999999" />
                             </asp:GridView>
+
                         </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="ticketsGrid" />
+                        </Triggers>
                     </asp:UpdatePanel>
 
                 </div>
@@ -112,7 +107,7 @@
         </div>
         <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-12 col-md-6 col-sm-6 col-lg-6">
                         <div class="btn-group btn-group-lg">
                             <asp:Button Text="Registrar" ToolTip="Registrar" ID="RegistrarBtn" runat="server" CssClass="btn btn-outline-success btn-block" OnClientClick="AcumulateTotal()" OnClick="RegistrarBtn_Click" />
@@ -133,7 +128,7 @@
             }
 
             function AcumulateTotal() {
-                if ($("#<%= nombreTxt.ClientID %>").val() != '' && $("#<%= telefonoTxt.ClientID %>").val()!='' ) {
+                if ($("#<%= nombreTxt.ClientID %>").val() != '' && $("#<%= telefonoTxt.ClientID %>").val() != '') {
                     var check = $("#<%= multicket_chbox.ClientID %>").val();
                     var total = $("#<%= tarifaTxt.ClientID %>").val();
                     var totalf = $("#<%= totalTxt.ClientID %>").val();

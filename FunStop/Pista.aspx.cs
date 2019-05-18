@@ -23,6 +23,22 @@ namespace FunStop
             ticketspendGrid.DataSource = dt;
             ticketspendGrid.DataBind();
         }
+
+        public void FillAvailableCarsGridView()
+        {
+            dt = C.GetAvailableCars();
+            carrosGrid.DataSource = dt;
+            carrosGrid.DataBind();
+            carrosGrid.Columns[1].Visible = false;
+        }
+
+        public void RemoveSelectedRowClass(GridView grid)
+        {
+            foreach (GridViewRow row in grid.Rows)
+            {
+                row.CssClass = "";
+            }
+        }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,6 +49,7 @@ namespace FunStop
             else
             {
                 FillTicketsPendGridView();
+                FillAvailableCarsGridView();
             }
         }
         #region EventMethods
@@ -43,7 +60,48 @@ namespace FunStop
             FillTicketsPendGridView();
         }
 
+        protected void ticketchkb_CheckedChanged(object sender, EventArgs e)
+        {
+            RemoveSelectedRowClass(ticketspendGrid);
+
+            foreach (GridViewRow row in ticketspendGrid.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkRow = (row.Cells[0].FindControl("ticketChkb") as CheckBox);
+                    if (chkRow.Checked)
+                    {
+                        row.CssClass = "bg-danger";
+                        ClsGlobal.TicketID = Convert.ToInt32(row.Cells[1].Text.ToString());
+                        //string Message = "alert('Ticket # " + ClsGlobal.TicketID + " seleccionado!')";
+                        //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
+                        break;
+                    }
+                }
+            }
+        }
+        protected void carChkb_CheckedChanged(object sender, EventArgs e)
+        {
+            RemoveSelectedRowClass(carrosGrid);
+
+            foreach (GridViewRow row in  carrosGrid.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkRow = (row.Cells[0].FindControl("carChkb") as CheckBox);                    
+                    if (chkRow.Checked)
+                    {
+                        row.CssClass = "bg-danger";
+                        ClsGlobal.CarID = Convert.ToInt32(row.Cells[1].Text.ToString());
+                        //string Message = "alert('Ticket # " + ClsGlobal.CarID + " seleccionado!')";
+                        //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
+                        break;
+                    }
+                }
+            }
+        }
         #endregion
+
 
     }
 }

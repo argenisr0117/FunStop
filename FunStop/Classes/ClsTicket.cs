@@ -44,6 +44,16 @@ namespace FunStop.Classes
             return Msj;
         }
 
+        public int TicketCancel()
+        {
+            int Msj = 0;
+            List<ClsParams> lst = new List<ClsParams>();
+            lst.Add(new ClsParams("@Msj", "", SqlDbType.Int, ParameterDirection.Output, 8));
+            lst.Add(new ClsParams("@TicketID", TicketID));
+            Conn.EjecutarSP("Sp_AnularTicket", ref lst);
+            Msj = Convert.ToInt32(lst[0].Valor);
+            return Msj;
+        }
         public DataTable GetLastTickets()
         {
             DataTable dt = new DataTable();

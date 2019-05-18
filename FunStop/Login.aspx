@@ -8,9 +8,10 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap-grid.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Styles/Styles.css" rel="stylesheet" />
     <script src="Scripts/popper.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-    <title></title>
+    <title>Login - FunStop</title>
 </head>
 <body>
     <div class=" jumbotron text-center">
@@ -18,8 +19,8 @@
     </div>
     <%-- <div class=" d-flex justify-content-center justi align-items-center container">--%>
 
-    <div class=" container-fluid h-100">
-        <div class="row justify-content-center align-items-center h-100">
+    <div class=" container-fluid content mb-2">
+        <div class="row justify-content-center align-items-center">
             <div class=" col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                 <form id="form1" runat="server" defaultfocus="userTxt">
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -52,9 +53,9 @@
     </div>
 
     <%--  </div>--%>
-    <div class="card-footer fixed-bottom">
+    <footer class="card-footer">
         <p class="text-center">&copy; <%: DateTime.Now.Year %>- FunStop</p>
-    </div>
+    </footer>
 
 </body>
 <script>

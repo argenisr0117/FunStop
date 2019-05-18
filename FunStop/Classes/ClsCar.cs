@@ -37,6 +37,13 @@ namespace FunStop.Classes
             lst.Add(new ClsParams("@CarTypeID", CarTypeID));
             return dt = Conn.Listado("Sp_GetRateList", lst);
         }
+
+        public DataTable GetAvailableCars()
+        {
+            DataTable dt = new DataTable();
+            List<ClsParams> lst = new List<ClsParams>();
+            return dt = Conn.Listado("Sp_GetAvailableCars", lst);
+        }
         #endregion
 
     }

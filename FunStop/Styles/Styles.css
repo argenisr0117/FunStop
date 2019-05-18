@@ -1,5 +1,23 @@
 ﻿
-
+/*footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color:#fff;
+}*/
+html{
+    height:100%!important;
+}
+body{
+    height:100vh!important;
+    display:flex!important;
+    flex-direction:column!important;
+    padding-bottom:0!important;
+}
+.content{
+    flex:1;
+}
 .time{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:80px;

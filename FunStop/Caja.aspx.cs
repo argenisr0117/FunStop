@@ -100,6 +100,7 @@ namespace FunStop
                 //{
                 //    CleanTxts();
                 //}
+                FillGridView();
             }
             else
             {
@@ -164,20 +165,28 @@ namespace FunStop
         protected void ticketsGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string command = e.CommandName;
-            string autoId = e.CommandArgument.ToString();
+            string TicketId = e.CommandArgument.ToString();
+            int Answer = 0;
 
             switch (command)
             {
                 case "Print":
 
-                    ClsGlobal.TicketID = Convert.ToInt16(autoId);
+                    ClsGlobal.TicketID = Convert.ToInt16(TicketId);
                     ScriptManager.RegisterStartupScript(Page, GetType(), "OpenWindow", "window.open('Report.aspx','mywindow','menubar=1,resizable=1,width=900,height=600');", true);
                     break;
 
-                case "Cancel":
-                    //Response.Write("<b>Mark As Archived for " + autoId + " </b> button clicked");
+                case "Anular":
+                    ClsGlobal.TicketID = Convert.ToInt16(TicketId);
+                    T.TicketID = ClsGlobal.TicketID;
+                    Answer = T.TicketCancel();
+                    FillGridView();
+                    //UpdatePanel5.Update();
+                    string Message = "alert('Ticket # " + ClsGlobal.TicketID + " anulado!')";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
                     break;
             }
+            //ClsGlobal.TicketID = 0;
         }
         #endregion
 

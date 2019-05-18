@@ -11,7 +11,11 @@ namespace FunStop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ClsGlobal.UserID == 0)
+            {
+                Response.Redirect("Login.aspx");
 
+            }
         }
     }
 }
