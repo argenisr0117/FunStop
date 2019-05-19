@@ -31,6 +31,15 @@ namespace FunStop {
         protected global::System.Web.UI.WebControls.GridView ticketspendGrid;
         
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
         /// carrosGrid control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace FunStop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView carrosGrid;
+        
+        /// <summary>
+        /// UpdatePanel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
         
         /// <summary>
         /// carrospistaGrid control.
@@ -58,13 +76,13 @@ namespace FunStop {
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// RegistrarBtn control.
+        /// asignarBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RegistrarBtn;
+        protected global::System.Web.UI.WebControls.Button asignarBtn;
         
         /// <summary>
         /// LimpiarBtn control.

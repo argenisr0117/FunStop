@@ -45,7 +45,7 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                 <h4>Carros Disponibles</h4>
                 <div class="table-responsive-sm">
-                    <asp:UpdatePanel runat="server">
+                    <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                         <ContentTemplate>
                             <asp:GridView ID="carrosGrid" runat="server"
                                 BorderColor="#CCCCCC"
@@ -82,7 +82,7 @@
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <h4>Carros en Pista</h4>
                 <div class="table-responsive-sm">
-                    <asp:UpdatePanel runat="server">
+                    <asp:UpdatePanel runat="server" ID="UpdatePanel4">
                         <ContentTemplate>
                             <asp:GridView ID="carrospistaGrid" runat="server"
                                 BorderColor="#CCCCCC"
@@ -117,7 +117,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-sm-6 col-lg-6">
                         <div class="btn-group btn-group-lg">
-                            <asp:Button Text="Registrar" ToolTip="Registrar" ID="RegistrarBtn" runat="server" CssClass="btn btn-outline-success btn-block" />
+                            <asp:Button Text="Asignar" ToolTip="Registrar" ID="asignarBtn" runat="server" CssClass="btn btn-outline-success btn-block" />
                         </div>
                         <div class="btn-group btn-group-lg">
                             <asp:Button Text="Limpiar" ID="LimpiarBtn" UseSubmitBehavior="False" CausesValidation="false" ToolTip="Limpiar" runat="server" CssClass="btn  btn-outline-danger btn-block" />

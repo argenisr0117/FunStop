@@ -11,6 +11,8 @@ namespace FunStop
         static int _UserID;
         static int _TicketID;
         static int _CarID;
+        static int _Time;
+
 
         public static string LoginName
         {
@@ -54,6 +56,17 @@ namespace FunStop
             set
             {
                 _CarID = value;
+            }
+        }
+        public static int TIme
+        {
+            get
+            {
+                return _Time;
+            }
+            set
+            {
+                _Time = value;
             }
         }
     }

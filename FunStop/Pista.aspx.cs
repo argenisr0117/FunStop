@@ -73,9 +73,15 @@ namespace FunStop
                     {
                         row.CssClass = "bg-danger";
                         ClsGlobal.TicketID = Convert.ToInt32(row.Cells[1].Text.ToString());
+                        ClsGlobal.TIme=Convert.ToInt32(row.Cells[1].Text.ToString());
                         //string Message = "alert('Ticket # " + ClsGlobal.TicketID + " seleccionado!')";
                         //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
                         break;
+                    }
+                    else
+                    {
+                        ClsGlobal.TicketID = 0;
+                        ClsGlobal.TIme = 0;
                     }
                 }
             }
@@ -96,6 +102,10 @@ namespace FunStop
                         //string Message = "alert('Ticket # " + ClsGlobal.CarID + " seleccionado!')";
                         //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
                         break;
+                    }
+                    else
+                    {
+                        ClsGlobal.CarID = 0;
                     }
                 }
             }

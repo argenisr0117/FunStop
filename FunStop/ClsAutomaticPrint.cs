@@ -31,8 +31,8 @@ namespace FunStop
               @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
                 <PageWidth>3.1in</PageWidth>
-                <PageHeight>5in</PageHeight>
-                <MarginTop>0.1in</MarginTop>
+                <PageHeight>8in</PageHeight>
+                <MarginTop>0in</MarginTop>
                 <MarginLeft>0.1in</MarginLeft>
                 <MarginRight>0.1in</MarginRight>
                 <MarginBottom>0.1in</MarginBottom>

@@ -130,6 +130,7 @@ namespace FunStop
                 GetRate();
             }
         }
+
         protected void RegistrarBtn_Click(object sender, EventArgs e)
         {
             TicketRegister(this, e);

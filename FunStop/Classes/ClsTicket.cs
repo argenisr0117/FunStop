@@ -20,6 +20,7 @@ namespace FunStop.Classes
         public decimal Fare { get; set; }
         public decimal Total { get; set; }
         public int UserID { get; set; }
+        public int CarID { get; set; }
 
 
 
@@ -66,6 +67,20 @@ namespace FunStop.Classes
             DataTable dt = new DataTable();
             List<ClsParams> lst = new List<ClsParams>();
             return dt = Conn.Listado("Sp_GetPendingTickets", lst);
+        }
+
+        public int TicketCarAssign()
+        {
+            int Msj = 0;
+            List<ClsParams> lst = new List<ClsParams>();
+            lst.Add(new ClsParams("@Msj", "", SqlDbType.Int, ParameterDirection.Output, 8));
+            lst.Add(new ClsParams("@TicketID", TicketID));
+            lst.Add(new ClsParams("@CarID", CarID));
+            lst.Add(new ClsParams("@Tiempo", TrackTime));
+            lst.Add(new ClsParams("@UserID", UserID));
+            Conn.EjecutarSP("Sp_TicketCarAssing", ref lst);
+            Msj = Convert.ToInt32(lst[0].Valor);
+            return Msj;
         }
         #endregion
     }
