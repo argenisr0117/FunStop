@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Pista" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Pista.aspx.cs" Inherits="FunStop.Pista" %>
+﻿<%@ Page Title="Pista - FunStop" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Pista.aspx.cs" Inherits="FunStop.Pista" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
@@ -7,6 +7,13 @@
     </div>
     <div class="container-fluid mb-3">
         <div class="row">
+            <asp:UpdatePanel runat="server" ID="UpdatePanel6">
+                <ContentTemplate>
+                    <asp:Timer ID="ticketTimer" runat="server" Interval="5000" OnTick="ticketTimer_Tick">
+                    </asp:Timer>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
             <div class=" col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -39,6 +46,9 @@
                             </asp:UpdatePanel>
 
                         </div>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <asp:Button Text="Asignar" ToolTip="Asignar" OnClick="asignarBtn_Click" ID="asignarBtn" runat="server" CssClass="btn btn-success btn-block" />
+                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
@@ -57,7 +67,7 @@
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:CheckBox ID="carChkb" runat="server" onclick="CheckAvailableCar(this);"
-                                               OnCheckedChanged="carChkb_CheckedChanged"  AutoPostBack="true" />
+                                                OnCheckedChanged="carChkb_CheckedChanged" AutoPostBack="true" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="CarID" HeaderText="CarID" />
@@ -93,13 +103,14 @@
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:CheckBox ID="carChkb" runat="server" onclick="CheckAvailableCar(this);"
-                                                AutoPostBack="true" />
+                                            <asp:CheckBox ID="carpistaChkb" runat="server" onclick="CheckFinishedTicket(this);"
+                                                AutoPostBack="true" OnCheckedChanged="carpistaChkb_CheckedChanged" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="CarID" HeaderText="CarID" Visible="false" />
-                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-                                    <asp:BoundField DataField="TipoCarro" HeaderText="Tipo Carro" />
+                                    <asp:BoundField DataField="TicketID" HeaderText="TicketID" />
+                                    <asp:BoundField DataField="CarID" HeaderText="CarID" />
+                                    <asp:BoundField DataField="Carro" HeaderText="Carro" />
+                                    <asp:BoundField DataField="TiempoR" HeaderText="T. Restante" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                         </ItemTemplate>
@@ -107,25 +118,26 @@
                                 </Columns>
                                 <RowStyle BorderColor="#999999" />
                             </asp:GridView>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <asp:Button Text="Completar" ID="LimpiarBtn" UseSubmitBehavior="False" CausesValidation="false" ToolTip="Completar" runat="server" CssClass="btn  btn-danger btn-block" />
+                            </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
             </div>
         </div>
-        <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+        <%--   <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <div class="row">
-                    <div class="col-12 col-md-6 col-sm-6 col-lg-6">
+                <div class="row justify-content-lg-center">
+                    <div class="col-12 col-md-6 col-sm-6 col-lg-6 justify-content-lg-center">
                         <div class="btn-group btn-group-lg">
-                            <asp:Button Text="Asignar" ToolTip="Registrar" ID="asignarBtn" runat="server" CssClass="btn btn-outline-success btn-block" />
                         </div>
                         <div class="btn-group btn-group-lg">
-                            <asp:Button Text="Limpiar" ID="LimpiarBtn" UseSubmitBehavior="False" CausesValidation="false" ToolTip="Limpiar" runat="server" CssClass="btn  btn-outline-danger btn-block" />
                         </div>
                     </div>
                 </div>
             </ContentTemplate>
-        </asp:UpdatePanel>
+        </asp:UpdatePanel>--%>
 
         <script type="text/javascript"> 
 
@@ -145,6 +157,14 @@
                 source.checked = isChecked;
                 //source.addClass('bg-danger');
             }
+            function CheckFinishedTicket(source) {
+                var isChecked = source.checked;
+                $("#<%=carrospistaGrid.ClientID%> input[id*='carpistaChkb']").each(function (index) {
+                     $(this).attr('checked', false);
+                 });
+                 source.checked = isChecked;
+                 //source.addClass('bg-danger');
+             }
             /*Prueba de como acceder a controles asp.net con jquery*/
             //$(function () {
             //    $("[id*=RegistrarBtn]").click(function () {

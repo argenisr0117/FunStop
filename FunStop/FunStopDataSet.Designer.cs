@@ -295,6 +295,10 @@ namespace FunStop {
             
             private global::System.Data.DataColumn columnUserLogin;
             
+            private global::System.Data.DataColumn columnCarType;
+            
+            private global::System.Data.DataColumn columnExcMinuteRate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Sp_TicketReportDataTable() {
@@ -394,6 +398,22 @@ namespace FunStop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CarTypeColumn {
+                get {
+                    return this.columnCarType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ExcMinuteRateColumn {
+                get {
+                    return this.columnExcMinuteRate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +449,7 @@ namespace FunStop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sp_TicketReportRow AddSp_TicketReportRow(System.DateTime RegDate, decimal Fare, int TrackTime, string Customer, string CustomerPhone, string UserLogin) {
+            public Sp_TicketReportRow AddSp_TicketReportRow(System.DateTime RegDate, decimal Fare, int TrackTime, string Customer, string CustomerPhone, string UserLogin, string CarType, decimal ExcMinuteRate) {
                 Sp_TicketReportRow rowSp_TicketReportRow = ((Sp_TicketReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -439,7 +459,9 @@ namespace FunStop {
                         Customer,
                         CustomerPhone,
                         null,
-                        UserLogin};
+                        UserLogin,
+                        CarType,
+                        ExcMinuteRate};
                 rowSp_TicketReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSp_TicketReportRow);
                 return rowSp_TicketReportRow;
@@ -470,6 +492,8 @@ namespace FunStop {
                 this.columnCustomerPhone = base.Columns["CustomerPhone"];
                 this.columnUserID = base.Columns["UserID"];
                 this.columnUserLogin = base.Columns["UserLogin"];
+                this.columnCarType = base.Columns["CarType"];
+                this.columnExcMinuteRate = base.Columns["ExcMinuteRate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -491,6 +515,10 @@ namespace FunStop {
                 base.Columns.Add(this.columnUserID);
                 this.columnUserLogin = new global::System.Data.DataColumn("UserLogin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUserLogin);
+                this.columnCarType = new global::System.Data.DataColumn("CarType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCarType);
+                this.columnExcMinuteRate = new global::System.Data.DataColumn("ExcMinuteRate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExcMinuteRate);
                 this.columnTicketID.AutoIncrement = true;
                 this.columnTicketID.AllowDBNull = false;
                 this.columnTicketID.ReadOnly = true;
@@ -500,6 +528,7 @@ namespace FunStop {
                 this.columnUserID.AllowDBNull = false;
                 this.columnUserID.ReadOnly = true;
                 this.columnUserLogin.MaxLength = 15;
+                this.columnCarType.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -760,6 +789,38 @@ namespace FunStop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CarType {
+                get {
+                    try {
+                        return ((string)(this[this.tableSp_TicketReport.CarTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CarType\' in table \'Sp_TicketReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSp_TicketReport.CarTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal ExcMinuteRate {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableSp_TicketReport.ExcMinuteRateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ExcMinuteRate\' in table \'Sp_TicketReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSp_TicketReport.ExcMinuteRateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsRegDateNull() {
                 return this.IsNull(this.tableSp_TicketReport.RegDateColumn);
             }
@@ -828,6 +889,30 @@ namespace FunStop {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetUserLoginNull() {
                 this[this.tableSp_TicketReport.UserLoginColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCarTypeNull() {
+                return this.IsNull(this.tableSp_TicketReport.CarTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCarTypeNull() {
+                this[this.tableSp_TicketReport.CarTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsExcMinuteRateNull() {
+                return this.IsNull(this.tableSp_TicketReport.ExcMinuteRateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetExcMinuteRateNull() {
+                this[this.tableSp_TicketReport.ExcMinuteRateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -998,6 +1083,8 @@ namespace FunStop.FunStopDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("CustomerPhone", "CustomerPhone");
             tableMapping.ColumnMappings.Add("UserID", "UserID");
             tableMapping.ColumnMappings.Add("UserLogin", "UserLogin");
+            tableMapping.ColumnMappings.Add("CarType", "CarType");
+            tableMapping.ColumnMappings.Add("ExcMinuteRate", "ExcMinuteRate");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

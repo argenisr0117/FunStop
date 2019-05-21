@@ -84,7 +84,7 @@
                                     <asp:BoundField DataField="TipoCarro" HeaderText="Tipo Carro" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ToolTip="Anular" CommandName="Anular" ID="anularBtn" CausesValidation="false" CssClass="btn btn-sm btn-outline-danger"><i class='fa fa-close'></i></asp:LinkButton>
+                                            <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ToolTip="Anular" CommandName="Anular" ID="anularBtn" CausesValidation="false" CssClass="btn btn-sm btn-outline-danger" OnClientClick="return confirm('Desea anular el ticket seleccionado?');"><i class='fa fa-close'></i></asp:LinkButton>
                                             <asp:LinkButton runat="server" CommandArgument='<%# Eval("TicketID") %>' ToolTip="Reimprimir" CommandName="Print" ID="reimprimirBtn" CausesValidation="false" CssClass="btn btn-sm btn-outline-success"><i class='fa fa-print'></i></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -129,7 +129,7 @@
 
             function AcumulateTotal() {
                 if ($("#<%= nombreTxt.ClientID %>").val() != '' && $("#<%= telefonoTxt.ClientID %>").val() != '') {
-                    var check = $("#<%= multicket_chbox.ClientID %>").val();
+                    var check = $("#<%= multicket_chbox.ClientID %>").is(':checked');
                     var total = $("#<%= tarifaTxt.ClientID %>").val();
                     var totalf = $("#<%= totalTxt.ClientID %>").val();
                     var totalff = 0;

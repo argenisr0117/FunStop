@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Sp_TicketReportTableAdapter" GeneratorDataComponentClassName="Sp_TicketReportTableAdapter" Name="Sp_TicketReport" UserDataComponentName="Sp_TicketReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Conexion (Web.config)" DbObjectName="FunStop.dbo.Sp_TicketReport" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Conexion (Web.config)" DbObjectName="FunStop.dbo.Sp_TicketReport" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.Sp_TicketReport</CommandText>
@@ -30,6 +30,8 @@
               <Mapping SourceColumn="CustomerPhone" DataSetColumn="CustomerPhone" />
               <Mapping SourceColumn="UserID" DataSetColumn="UserID" />
               <Mapping SourceColumn="UserLogin" DataSetColumn="UserLogin" />
+              <Mapping SourceColumn="CarType" DataSetColumn="CarType" />
+              <Mapping SourceColumn="ExcMinuteRate" DataSetColumn="ExcMinuteRate" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -41,7 +43,7 @@
   <xs:element name="FunStopDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="FunStopDataSet" msprop:Generator_UserDSName="FunStopDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Sp_TicketReport" msprop:Generator_TableClassName="Sp_TicketReportDataTable" msprop:Generator_TableVarName="tableSp_TicketReport" msprop:Generator_TablePropName="Sp_TicketReport" msprop:Generator_RowDeletingName="Sp_TicketReportRowDeleting" msprop:Generator_RowChangingName="Sp_TicketReportRowChanging" msprop:Generator_RowEvHandlerName="Sp_TicketReportRowChangeEventHandler" msprop:Generator_RowDeletedName="Sp_TicketReportRowDeleted" msprop:Generator_UserTableName="Sp_TicketReport" msprop:Generator_RowChangedName="Sp_TicketReportRowChanged" msprop:Generator_RowEvArgName="Sp_TicketReportRowChangeEvent" msprop:Generator_RowClassName="Sp_TicketReportRow">
+        <xs:element name="Sp_TicketReport" msprop:Generator_TableClassName="Sp_TicketReportDataTable" msprop:Generator_TableVarName="tableSp_TicketReport" msprop:Generator_RowChangedName="Sp_TicketReportRowChanged" msprop:Generator_TablePropName="Sp_TicketReport" msprop:Generator_RowDeletingName="Sp_TicketReportRowDeleting" msprop:Generator_RowChangingName="Sp_TicketReportRowChanging" msprop:Generator_RowEvHandlerName="Sp_TicketReportRowChangeEventHandler" msprop:Generator_RowDeletedName="Sp_TicketReportRowDeleted" msprop:Generator_RowClassName="Sp_TicketReportRow" msprop:Generator_UserTableName="Sp_TicketReport" msprop:Generator_RowEvArgName="Sp_TicketReportRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TicketID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnTicketID" msprop:Generator_ColumnPropNameInRow="TicketID" msprop:Generator_ColumnPropNameInTable="TicketIDColumn" msprop:Generator_UserColumnName="TicketID" type="xs:int" />
@@ -70,6 +72,14 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="CarType" msprop:Generator_ColumnVarNameInTable="columnCarType" msprop:Generator_ColumnPropNameInRow="CarType" msprop:Generator_ColumnPropNameInTable="CarTypeColumn" msprop:Generator_UserColumnName="CarType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExcMinuteRate" msprop:Generator_ColumnVarNameInTable="columnExcMinuteRate" msprop:Generator_ColumnPropNameInRow="ExcMinuteRate" msprop:Generator_ColumnPropNameInTable="ExcMinuteRateColumn" msprop:Generator_UserColumnName="ExcMinuteRate" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

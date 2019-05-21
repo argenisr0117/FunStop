@@ -399,10 +399,8 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingLeft>1pt</PaddingLeft>
+          <PaddingRight>1pt</PaddingRight>
         </Style>
       </Textbox>
       <Textbox Name="TicketID">
@@ -453,7 +451,7 @@
         </Style>
       </Line>
       <Line Name="Line2">
-        <Top>3.76872cm</Top>
+        <Top>4.08622cm</Top>
         <Height>0cm</Height>
         <Width>7.15349cm</Width>
         <ZIndex>15</ZIndex>
@@ -493,8 +491,68 @@
           <PaddingRight>1pt</PaddingRight>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Tipo Carro:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox12</rd:DefaultName>
+        <Top>1.42472in</Top>
+        <Left>0.12375in</Left>
+        <Height>0.09028in</Height>
+        <Width>0.83721in</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>1pt</PaddingLeft>
+          <PaddingRight>1pt</PaddingRight>
+        </Style>
+      </Textbox>
+      <Textbox Name="TrackTime2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!CarType.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>TrackTime</rd:DefaultName>
+        <Top>1.43167in</Top>
+        <Left>0.97917in</Left>
+        <Height>0.09028in</Height>
+        <Width>1.68483in</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>1pt</PaddingLeft>
+          <PaddingRight>1pt</PaddingRight>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>3.99203cm</Height>
+    <Height>4.17724cm</Height>
     <Style />
   </Body>
   <Width>7.15349cm</Width>
@@ -556,6 +614,14 @@
         <Field Name="UserLogin">
           <DataField>UserLogin</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CarType">
+          <DataField>CarType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExcMinuteRate">
+          <DataField>ExcMinuteRate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

@@ -82,6 +82,20 @@ namespace FunStop.Classes
             Msj = Convert.ToInt32(lst[0].Valor);
             return Msj;
         }
+
+        public DataTable GetAssignedTickets()
+        {
+            DataTable dt = new DataTable();
+            List<ClsParams> lst = new List<ClsParams>();
+            return dt = Conn.Listado("Sp_GetTicketsAssigned", lst);
+        }
+
+        public void UpdateTicketTime()
+        {
+            //DataTable dt = new DataTable();
+            List<ClsParams> lst = new List<ClsParams>();
+            Conn.EjecutarSP("Sp_UpdateTicketTime", ref lst);
+        }
         #endregion
     }
 }

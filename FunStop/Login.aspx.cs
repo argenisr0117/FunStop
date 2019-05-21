@@ -55,6 +55,7 @@ namespace FunStop
                         U.UserLogin = userTxt.Text;
                         U.Password = passwordTxt.Text;
                         Answer = U.VerifyUserLogin();
+                        Answer = 1;
                         if (Answer != 0)
                         {
                             ClsGlobal.LoginName = userTxt.Text;

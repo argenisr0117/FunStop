@@ -26,6 +26,7 @@ namespace FunStop
 
         public void FillAvailableCarsGridView()
         {
+            carrosGrid.Columns[1].Visible = true;
             dt = C.GetAvailableCars();
             carrosGrid.DataSource = dt;
             carrosGrid.DataBind();
@@ -39,6 +40,13 @@ namespace FunStop
                 row.CssClass = "";
             }
         }
+
+        public void FillAssignedTicketsGrid()
+        {
+            dt = T.GetAssignedTickets();
+            carrospistaGrid.DataSource = dt;
+            carrospistaGrid.DataBind();
+        }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,6 +58,8 @@ namespace FunStop
             {
                 FillTicketsPendGridView();
                 FillAvailableCarsGridView();
+                FillAssignedTicketsGrid();
+                ticketTimer_Tick(e, e);
             }
         }
         #region EventMethods
@@ -59,7 +69,6 @@ namespace FunStop
             ticketspendGrid.PageIndex = e.NewPageIndex;
             FillTicketsPendGridView();
         }
-
         protected void ticketchkb_CheckedChanged(object sender, EventArgs e)
         {
             RemoveSelectedRowClass(ticketspendGrid);
@@ -73,7 +82,8 @@ namespace FunStop
                     {
                         row.CssClass = "bg-danger";
                         ClsGlobal.TicketID = Convert.ToInt32(row.Cells[1].Text.ToString());
-                        ClsGlobal.TIme=Convert.ToInt32(row.Cells[1].Text.ToString());
+                        ClsGlobal.Time=Convert.ToInt32(row.Cells[2].Text.ToString());
+                        ClsGlobal.TicketTCar = row.Cells[4].Text.ToString();
                         //string Message = "alert('Ticket # " + ClsGlobal.TicketID + " seleccionado!')";
                         //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
                         break;
@@ -81,7 +91,8 @@ namespace FunStop
                     else
                     {
                         ClsGlobal.TicketID = 0;
-                        ClsGlobal.TIme = 0;
+                        ClsGlobal.Time = 0;
+                        ClsGlobal.TicketTCar = "";
                     }
                 }
             }
@@ -99,6 +110,7 @@ namespace FunStop
                     {
                         row.CssClass = "bg-danger";
                         ClsGlobal.CarID = Convert.ToInt32(row.Cells[1].Text.ToString());
+                        ClsGlobal.CarType = row.Cells[3].Text.ToString();
                         //string Message = "alert('Ticket # " + ClsGlobal.CarID + " seleccionado!')";
                         //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
                         break;
@@ -106,8 +118,70 @@ namespace FunStop
                     else
                     {
                         ClsGlobal.CarID = 0;
+                        ClsGlobal.CarType = "";
                     }
                 }
+            }
+        }
+        protected void carpistaChkb_CheckedChanged(object sender, EventArgs e)
+        {
+            RemoveSelectedRowClass(carrospistaGrid);
+
+            foreach (GridViewRow row in carrospistaGrid.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkRow = (row.Cells[0].FindControl("carpistaChkb") as CheckBox);
+                    if (chkRow.Checked)
+                    {
+                        row.CssClass = "bg-danger";
+                        ClsGlobal.CarID = Convert.ToInt32(row.Cells[1].Text.ToString());
+                        ClsGlobal.TicketID = Convert.ToInt32(row.Cells[2].Text.ToString());
+                        //string Message = "alert('Ticket # " + ClsGlobal.CarID + " seleccionado!')";
+                        //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
+                        break;
+                    }
+                    else
+                    {
+                        ClsGlobal.CarID = 0;
+                        ClsGlobal.TicketID = 0;
+                    }
+                }
+            }
+        }
+        protected void asignarBtn_Click(object sender, EventArgs e)
+        {
+            if (ClsGlobal.TicketID > 0 && ClsGlobal.CarID > 0)
+            {
+                if (ClsGlobal.TicketTCar.ToString() != ClsGlobal.CarType.ToString())
+                {
+                    string Message = "alert('Error,Tipo de carro selecionado no coincide con el del ticket.')";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
+                }
+                else
+                {
+                    int Answer = 0;
+                    T.TicketID = ClsGlobal.TicketID;
+                    T.CarID = ClsGlobal.CarID;
+                    T.UserID = ClsGlobal.UserID;
+                    T.TrackTime = ClsGlobal.Time;
+                    Answer = T.TicketCarAssign();
+                    if (Answer == 1)
+                    {
+                        FillAssignedTicketsGrid();
+                        FillAvailableCarsGridView();
+                        FillTicketsPendGridView();
+                    }
+                }
+
+            }
+        }
+        protected void ticketTimer_Tick(object sender, EventArgs e)
+        {
+            if (carrospistaGrid.Rows.Count > 0)
+            {
+                T.UpdateTicketTime();
+                FillAssignedTicketsGrid();
             }
         }
         #endregion
