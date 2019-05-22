@@ -14,10 +14,11 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-            <div class=" col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <div class=" col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <h4>Tickets Pendientes</h4>
+                        <hr />
                         <div class="table-responsive-sm">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
@@ -44,7 +45,6 @@
                                     </asp:GridView>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-
                         </div>
                         <div class="d-flex justify-content-center align-items-center">
                             <asp:Button Text="Asignar" ToolTip="Asignar" OnClick="asignarBtn_Click" ID="asignarBtn" runat="server" CssClass="btn btn-success btn-block" />
@@ -52,8 +52,9 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <h4>Carros Disponibles</h4>
+                <hr />
                 <div class="table-responsive-sm">
                     <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                         <ContentTemplate>
@@ -77,20 +78,16 @@
                                         <ItemTemplate>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <%--                    <asp:BoundField DataField="TicketID" HeaderText="TicketID" SortExpression="TicketID" />
-                        <asp:BoundField DataField="Customer" HeaderText="Cliente" SortExpression="Customer" />
-                        <asp:BoundField DataField="TrackTime" HeaderText="Tiempo" SortExpression="TrackTime" />--%>
                                 </Columns>
                                 <RowStyle BorderColor="#999999" />
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
                 </div>
-
             </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <h4>Carros en Pista</h4>
+                <hr />
                 <div class="table-responsive-sm">
                     <asp:UpdatePanel runat="server" ID="UpdatePanel4">
                         <ContentTemplate>
@@ -111,15 +108,12 @@
                                     <asp:BoundField DataField="CarID" HeaderText="CarID" />
                                     <asp:BoundField DataField="Carro" HeaderText="Carro" />
                                     <asp:BoundField DataField="TiempoR" HeaderText="T. Restante" />
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="TiempoE" HeaderText="T. Exced" />
                                 </Columns>
                                 <RowStyle BorderColor="#999999" />
                             </asp:GridView>
                             <div class="d-flex justify-content-center align-items-center">
-                                <asp:Button Text="Completar" ID="LimpiarBtn" UseSubmitBehavior="False" CausesValidation="false" ToolTip="Completar" runat="server" CssClass="btn  btn-danger btn-block" />
+                                <asp:Button Text="Completar" ID="completarBtn" OnClick="completarBtn_Click" UseSubmitBehavior="False" CausesValidation="false" ToolTip="Completar" runat="server" CssClass="btn btn-danger btn-block" />
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -160,11 +154,11 @@
             function CheckFinishedTicket(source) {
                 var isChecked = source.checked;
                 $("#<%=carrospistaGrid.ClientID%> input[id*='carpistaChkb']").each(function (index) {
-                     $(this).attr('checked', false);
-                 });
-                 source.checked = isChecked;
-                 //source.addClass('bg-danger');
-             }
+                    $(this).attr('checked', false);
+                });
+                source.checked = isChecked;
+                //source.addClass('bg-danger');
+            }
             /*Prueba de como acceder a controles asp.net con jquery*/
             //$(function () {
             //    $("[id*=RegistrarBtn]").click(function () {

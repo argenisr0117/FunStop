@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -82,7 +79,7 @@ namespace FunStop
                     {
                         row.CssClass = "bg-danger";
                         ClsGlobal.TicketID = Convert.ToInt32(row.Cells[1].Text.ToString());
-                        ClsGlobal.Time=Convert.ToInt32(row.Cells[2].Text.ToString());
+                        ClsGlobal.Time = Convert.ToInt32(row.Cells[2].Text.ToString());
                         ClsGlobal.TicketTCar = row.Cells[4].Text.ToString();
                         //string Message = "alert('Ticket # " + ClsGlobal.TicketID + " seleccionado!')";
                         //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
@@ -101,11 +98,11 @@ namespace FunStop
         {
             RemoveSelectedRowClass(carrosGrid);
 
-            foreach (GridViewRow row in  carrosGrid.Rows)
+            foreach (GridViewRow row in carrosGrid.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    CheckBox chkRow = (row.Cells[0].FindControl("carChkb") as CheckBox);                    
+                    CheckBox chkRow = (row.Cells[0].FindControl("carChkb") as CheckBox);
                     if (chkRow.Checked)
                     {
                         row.CssClass = "bg-danger";
@@ -135,8 +132,8 @@ namespace FunStop
                     if (chkRow.Checked)
                     {
                         row.CssClass = "bg-danger";
-                        ClsGlobal.CarID = Convert.ToInt32(row.Cells[1].Text.ToString());
-                        ClsGlobal.TicketID = Convert.ToInt32(row.Cells[2].Text.ToString());
+                        ClsGlobal.CarID = Convert.ToInt32(row.Cells[2].Text.ToString());
+                        ClsGlobal.TicketID = Convert.ToInt32(row.Cells[1].Text.ToString());
                         //string Message = "alert('Ticket # " + ClsGlobal.CarID + " seleccionado!')";
                         //ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
                         break;
@@ -184,8 +181,30 @@ namespace FunStop
                 FillAssignedTicketsGrid();
             }
         }
+
+        protected void completarBtn_Click(object sender, EventArgs e)
+        {
+            if (ClsGlobal.TicketID > 0 && ClsGlobal.CarID > 0)
+            {
+                int Answer = 0;
+                T.TicketID = ClsGlobal.TicketID;
+                T.CarID = ClsGlobal.CarID;
+                Answer = T.CompleteTicket();
+                if (Answer == 1)
+                {
+                    FillAssignedTicketsGrid();
+                    FillAvailableCarsGridView();
+                    FillTicketsPendGridView();
+                }
+            }
+            else
+            {
+                string Message = "alert('Error,Debe seleccionar un Ticket.')";
+                ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", Message, true);
+            }
+            ClsGlobal.CarID = 0;
+            ClsGlobal.TicketID = 0;
+        }
         #endregion
-
-
     }
 }

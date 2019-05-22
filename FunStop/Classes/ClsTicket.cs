@@ -96,6 +96,18 @@ namespace FunStop.Classes
             List<ClsParams> lst = new List<ClsParams>();
             Conn.EjecutarSP("Sp_UpdateTicketTime", ref lst);
         }
+
+        public int CompleteTicket()
+        {
+            int Msj = 0;
+            List<ClsParams> lst = new List<ClsParams>();
+            lst.Add(new ClsParams("@Msj", "", SqlDbType.Int, ParameterDirection.Output, 8));
+            lst.Add(new ClsParams("@TicketID", TicketID));
+            lst.Add(new ClsParams("@CarID", CarID));
+            Conn.EjecutarSP("Sp_CompleteTicket", ref lst);
+            Msj = Convert.ToInt32(lst[0].Valor);
+            return Msj;
+        }
         #endregion
     }
 }
